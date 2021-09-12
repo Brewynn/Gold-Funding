@@ -1,0 +1,38 @@
+{
+  "name": "App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "babel-polyfill": "^6.26.0",
+    "emotion-normalize": "^11.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "dotenv": "^10.0.0",
+    "html-webpack-plugin": "^5.3.2",
+    "webpack": "^5.47.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "webpack serve --config ./webpack.config.js --progress",
+    "start:prod": "webpack --mode production"
+  },
+  "keywords": [],
+  "author": "Brewyn Espinal, Brewyn@outlook.com",
+  "license": "ISC"
+}

@@ -7,81 +7,86 @@ const classNameInputButton = 'contact__input-button';
 /**
  * returns all data of the inputs
  *
- * @param {Object} state
- * @param {Function} setState
+ * @param {Object} fieldState
+ * @param {Function} setFieldState
+ * @param {Object} messageState
+ * @param {Function} setShowLoading
  * 
  * @return {Array}
  *
  */
-const inputData = (state, setState, messageState) => [
+const inputData = (
+  fieldState, setFieldState,
+  messageState, setShowLoading
+) => [
   {
     className: classNameInputText,
     onchange: ({ target: { value } }) =>
-      setState({ ...state, name: { ...state.name, value } }),
+      setFieldState({ ...fieldState, name: { ...fieldState.name, value } }),
     placeholder: 'name',
     type: 'text',
-    value: state.name.value,
+    value: fieldState.name.value,
     name: 'name',
     validation: {
-      isValid: state.name.validation.isValid,
-      message: state.name.validation.message,
-      test: state.name.validation.test,
-      showError: state.name.validation.showError,
+      isValid: fieldState.name.validation.isValid,
+      message: fieldState.name.validation.message,
+      test: fieldState.name.validation.test,
+      showError: fieldState.name.validation.showError,
     },
   },
   {
     className: classNameInputText,
     onchange: ({ target: { value } }) =>
-      setState({ ...state, email: { ...state.email, value } }),
+      setFieldState({ ...fieldState, email: { ...fieldState.email, value } }),
     name: 'email',
     placeholder: 'email',
     type: 'email',
-    value: state.email.value,
+    value: fieldState.email.value,
     validation: {
-      isValid: state.email.validation.isValid,
-      message: state.email.validation.message,
-      test: state.email.validation.test,
-      showError: state.email.validation.showError,
+      isValid: fieldState.email.validation.isValid,
+      message: fieldState.email.validation.message,
+      test: fieldState.email.validation.test,
+      showError: fieldState.email.validation.showError,
     },
   },
   {
     className: classNameInputText,
     onchange: ({ target: { value } }) =>
-      setState({ ...state, phone: { ...state.phone, value } }),
+      setFieldState({ ...fieldState, phone: { ...fieldState.phone, value } }),
     placeholder: 'phone number',
     type: 'text',
-    value: state.phone.value,
+    value: fieldState.phone.value,
     name: 'phone',
     validation: {
-      isValid: state.phone.validation.isValid,
-      message: state.phone.validation.message,
-      test: state.phone.validation.test,
-      showError: state.phone.validation.showError,
+      isValid: fieldState.phone.validation.isValid,
+      message: fieldState.phone.validation.message,
+      test: fieldState.phone.validation.test,
+      showError: fieldState.phone.validation.showError,
     },
   },
   {
     className: classNameInputText,
     onchange: ({ target: { value } }) =>
-      setState({ ...state, company: { ...state.company, value } }),
+      setFieldState({ ...fieldState, company: { ...fieldState.company, value } }),
     name: 'company',
     placeholder: 'company',
     type: 'text',
-    value: state.company.value,
+    value: fieldState.company.value,
     validation: {
-      isValid: state.company.validation.isValid,
-      message: state.company.validation.message,
-      test: state.company.validation.test,
-      showError: state.company.validation.showError,
+      isValid: fieldState.company.validation.isValid,
+      message: fieldState.company.validation.message,
+      test: fieldState.company.validation.test,
+      showError: fieldState.company.validation.showError,
     },
   },
   {
     className: classNameInputButton,
     onclick: async () => {
-      const validations = mapObject(state, ([key]) => {
-        const { validation: { test }, value } = state[key];
+      const validators = mapObject(fieldState, ([key]) => {
+        const { validation: { test }, value } = fieldState[key];
         const isValid = test(value);
 
-        setState((state) => {
+        setFieldState((state) => {
           const newState = { ...state };
 
           newState[key].validation.isValid = isValid;
@@ -90,14 +95,16 @@ const inputData = (state, setState, messageState) => [
 
         return isValid;
       });
-      const canSendEmail = !validations.includes(false);
+      const canSendMessage = !validators.includes(false);
 
-      if (canSendEmail) {
+      if (canSendMessage) {
+        setShowLoading(true);
+
         const { message, validations } = await res.post('api/v1/email', {
-          name: state.name.value,
-          email: state.email.value,
-          phone: state.phone.value,
-          company: state.company.value,
+          name: fieldState.name.value,
+          email: fieldState.email.value,
+          phone: fieldState.phone.value,
+          company: fieldState.company.value,
         });
         const showMessage = (text) => {
           messageState((state) => {
@@ -111,12 +118,11 @@ const inputData = (state, setState, messageState) => [
 
         switch (message) {
           case 'SUCCESS':
-            (function cleanFields() {
-              forEachSetState(setState, ([key], newState) => {
-                newState[key].value = '';
-                return newState;
-              });
-            })();
+            // Clean all the fields
+            forEachSetState(setFieldState, ([key], newState) => {
+              newState[key].value = '';
+              return newState;
+            });
             showMessage(
               'Your message has been sent successfully.'
             );
@@ -135,19 +141,20 @@ const inputData = (state, setState, messageState) => [
             break;
 
           case 'IS_NOT_VALID':
-            (function showError() {
-              forEachSetState(setState, ([, , index], newState) => {
-                const [key, isValid] = validations[index];
+            // Show an error message
+            forEachSetState(setState, ([, , index], newState) => {
+              const [key, isValid] = validations[index];
 
-                newState[key].validation.showError = !isValid;
-                return newState;
-              });
-            })();
+              newState[key].validation.showError = !isValid;
+              return newState;
+            });
             break;
 
           default:
             break;
         }
+
+        setShowLoading(false);
       }
     },
     type: 'button',
@@ -166,4 +173,7 @@ const infoData = [
   },
 ];
 
-export { inputData, infoData };
+export {
+  inputData,
+  infoData
+};

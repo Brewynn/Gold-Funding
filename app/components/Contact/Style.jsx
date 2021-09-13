@@ -4,9 +4,9 @@ const Container = styled.article`
   .contact {
     &__title {
       color: #ffd934;
-      text-transform: uppercase;
       font-size: 20px;
       font-weight: bold;
+      text-transform: uppercase;
 
       &-text {
         display: block;
@@ -56,12 +56,6 @@ const Container = styled.article`
       background: #232323;
     }
 
-    &__label {
-      color: #000000;
-      text-transform: capitalize;
-      margin-top: 10px;
-    }
-
     &__input-text,
     &__input-button {
       background: none;
@@ -77,11 +71,27 @@ const Container = styled.article`
       width: 100%;
     }
 
+    &__loading {
+      margin-left: -14px;
+      margin-top: -9px;
+      position: absolute;
+
+      &-image {
+        width: 50px;
+      }
+    }
+
+    &__input-button {
+      float: right;
+      width: auto;
+    }
+
     &__feedback--error {
       animation: error .3s forwards;
       color: #ff0000;
       margin-top: -12px;
       position: absolute;
+      font-size: 14px;
     }
 
     &__input-text,
@@ -95,11 +105,11 @@ const Container = styled.article`
       background: none;
       border: none;
       color: #ffd934;
-      font-size: 15px;
       cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
       outline: none;
       text-align: right;
-      font-weight: bold;
     }
 
     &__message,
@@ -110,6 +120,7 @@ const Container = styled.article`
     }
 
     &__message {
+      animation: message 0.5s forwards;
       background: #323232;
       border-radius: 2px;
       bottom: 20px;
@@ -122,13 +133,11 @@ const Container = styled.article`
       position: fixed;
       width: 248px;
       z-index: 1;
-      animation: message 0.5s forwards;
-
     }
 
     &__message-button {
-      border: none;
       background: transparent;
+      border: none;
       color: #edf43f;
       cursor: pointer;
       text-transform: uppercase;

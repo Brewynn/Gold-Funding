@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 const Container = styled.div`
   .slideshow {
-    background: black;
     align-items: center;
     background-image: url('../../asset/images/${prop => prop.imageName}');
     background-repeat: no-repeat;
@@ -10,12 +9,12 @@ const Container = styled.div`
     display: flex;
     height: 100vh;
     left: 0;
+    opacity: 1;
     position: absolute;
     top: 0;
-    opacity: 1;
-    width: 100%;
     transform: scale(100%);
     transition: background 1s ease-in-out;
+    width: 100%;
 
     &:after {
       background: #0000006e;
@@ -33,8 +32,8 @@ const Container = styled.div`
     }
 
     &__title {
-      white-space: nowrap;
       font-size: 80px;
+      white-space: nowrap;
     }
 
     &__sub-title {
@@ -77,8 +76,8 @@ const Container = styled.div`
           background-color: #fff;
         }
 
-        border: 1px solid #fff;
         background: transparent;
+        border: 1px solid #fff;
         cursor: pointer;
         display: inline-block;
         font-size: 0;

@@ -1,12 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { changeTabColor } from '../utils/client/helperFunctions';
+import About from './components/About';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 import GlobalStyle from './Style';
 import Home from './components/Home';
-import Contact from './components/Contact';
-import About from './components/About';
 import NavBar from './components/NavBar';
-import Footer from './components/Footer';
-import { changeTabColor } from '../utils/client/helperFunctions';
-
 
 const App = () => {
   const [stateSection, setStateSection] = useState('home');

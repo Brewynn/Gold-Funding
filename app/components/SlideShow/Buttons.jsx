@@ -15,5 +15,4 @@ const Buttons = ({ prevImage, nextImage }) => (
   </div>
 );
 
-
 export default Buttons;

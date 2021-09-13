@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import Container from './Style';
-import Input from './Input';
-import { inputData, infoData } from './data';
-import Title from './Title';
-import { validator } from '../../../utils/universal/helperFunction';
 import { FIELD_CONTACT } from '../../../utils/universal/constant';
+import { validator } from '../../../utils/universal/helperFunction';
+import { inputData, infoData } from './data';
+import Container from './Style';
 import Info from './Info';
+import Input from './Input';
 import Message from './Message';
+import Title from './Title';
+import Loading from './loading';
 
 const Contact = ({ innerRef }) => {
   const message = 'This is not a valid';
-  const [showMessage, setShowMessage] = useState({
+  const [showLoading, setShowLoading] = useState(false);
+  const [showMessageState, setShowMessage] = useState({
     showMessage: false,
     text: ''
   });
-  const [state, setState] = useState({
+  const [fieldState, setFieldState] = useState({
     name: {
       value: '',
       validation: {
@@ -59,7 +61,8 @@ const Contact = ({ innerRef }) => {
         <div className="contact__form">
           <form className="contact__form-container">
             <Title title="get started" />
-            <Input items={inputData(state, setState, setShowMessage)} />
+            <Input items={inputData(fieldState, setFieldState, setShowMessage, setShowLoading)} />
+            <Loading show={showLoading}/>
           </form>
         </div>
 
@@ -70,14 +73,11 @@ const Contact = ({ innerRef }) => {
           </div>
         </div>
       </div>
-      {
-        (showMessage.showMessage) ? (
-          <Message
-            text={showMessage.text}
-            setState={setShowMessage}
-          />
-        ) : null
-      }
+
+      <Message
+        state={showMessageState}
+        setState={setShowMessage}
+      />
     </Container>
   );
 }

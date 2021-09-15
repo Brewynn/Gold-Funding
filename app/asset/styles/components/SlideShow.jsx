@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
+import { COLORS } from '../../../../utils/universal/constant';
 
 const Container = styled.div`
   .slideshow {
     align-items: center;
     background-image: url('../../asset/images/${prop => prop.imageName}');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
     display: flex;
     height: 100vh;
     left: 0;
@@ -16,16 +15,6 @@ const Container = styled.div`
     transition: background 1s ease-in-out;
     width: 100%;
 
-    &:after {
-      background: #0000006e;
-      content: '';
-      height: 100vh;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-
     &__header {
       margin-left: 10%;
       z-index: 1;
@@ -33,11 +22,10 @@ const Container = styled.div`
 
     &__title {
       font-size: 80px;
-      white-space: nowrap;
     }
 
     &__sub-title {
-      color: #ffd934;
+      color: ${COLORS.GOLDEN_FUNDING};
       display: block;
       text-transform: capitalize;
     }
@@ -57,27 +45,22 @@ const Container = styled.div`
 
       &-buttons {
         background: transparent;
-        border: 1px solid #fff;
-        color: white;
+        border: 1px solid ${COLORS.WHITE};
+        color: ${COLORS.WHITE};
         cursor: pointer;
         height: 60px;
         transition: background 0.3s ease-in;
         width: 60px;
 
         &:hover {
-          background: #fff;
-          color: black;
+          background-color: ${COLORS.WHITE};
+          color:#000000;
         }
       }
 
       &-item {
-        &:hover,
-        &:nth-of-type(${prop => prop.paginationIndex + 1}) {
-          background-color: #fff;
-        }
-
         background: transparent;
-        border: 1px solid #fff;
+        border: 1px solid ${COLORS.WHITE};
         cursor: pointer;
         display: inline-block;
         font-size: 0;
@@ -85,6 +68,11 @@ const Container = styled.div`
         margin: 0 5px;
         white-space: nowrap;
         width: 15px;
+
+        &:hover,
+        &:nth-of-type(${prop => prop.paginationIndex + 1}) {
+          background-color: ${COLORS.WHITE};
+        }
       }
     }
   }

@@ -2,14 +2,16 @@ import React from 'react';
 
 const Info = ({ items }) =>
   <>
-    {items.map(({ title, subTitle }, index) => (
-      <div
+    {items.map(({ info, icon }, index) => (
+      <ul
         className="contact__info-container-text"
         key={index}
       >
-        <span className="contact__info-text">{title}</span>
-        <span className="contact__info-text">{subTitle}</span>
-      </div>
+        <li className="contact__info-text">
+          <i className={`${icon} contact__icon`}></i>
+          {info}
+        </li>
+      </ul>
     ))}
   </>
 

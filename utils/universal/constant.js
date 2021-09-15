@@ -1,7 +1,12 @@
 const SECTION = {
   HOME: 'home',
   ABOUT: 'about',
-  CONTACT: 'contact',
+  CONTACTS: 'contacts',
+};
+
+const COLORS = {
+  GOLDEN_FUNDING: '#ffd934',
+  WHITE: '#ffffff'
 };
 
 const FIELD_CONTACT = {
@@ -9,7 +14,7 @@ const FIELD_CONTACT = {
   EMAIL: 'email',
   PHONE: 'phone',
   COMPANY: 'company'
-}
+};
 
 const STATUS = {
   OK: 200,
@@ -21,5 +26,6 @@ const STATUS = {
 module.exports = {
   SECTION,
   FIELD_CONTACT,
-  STATUS
+  STATUS,
+  COLORS
 };

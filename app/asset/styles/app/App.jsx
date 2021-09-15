@@ -9,18 +9,34 @@ const GlobalStyle = () => (
       html {
         scroll-behavior: smooth;
         background: #1b1b1b;
+        font-family: arial;
+      }
+
+      .about,
+      .contact,
+      .slideshow {
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+
+        &:after {
+          background: #000000d9;
+          content: '';
+          height: 100vh;
+          position: absolute;
+          width: 100%;
+        }
       }
 
       article {
         & > div {
           align-items: center;
-          display: flex;
-          justify-content: center;
-          height: 100vh;
-          width: 100%;
           color: white;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-          Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+          display: flex;
+          height: 100vh;
+          justify-content: center;
+          width: 100%;
         }
       }
     `}

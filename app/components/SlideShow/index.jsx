@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Container from './Style';
+import Container from '../../asset/styles/components/SlideShow';
 import Pagination from './Pagination';
 import Buttons from './Buttons';
 import Title from './Title';

@@ -1,7 +1,7 @@
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 import router from './routers';
 import auth from './middleware/auth';
 

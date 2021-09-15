@@ -3,7 +3,7 @@ import { changeTabColor } from '../utils/client/helperFunctions';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import GlobalStyle from './Style';
+import GlobalStyle from './asset/styles/app/App';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
 
@@ -12,7 +12,7 @@ const App = () => {
   const sections = {
     home: useRef(),
     about: useRef(),
-    contact: useRef()
+    contacts: useRef()
   }
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const App = () => {
       <section>
         <Home innerRef={sections.home} />
         <About innerRef={sections.about} />
-        <Contact innerRef={sections.contact} />
+        <Contact innerRef={sections.contacts} />
       </section>
     </>
   );

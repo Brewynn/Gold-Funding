@@ -1,31 +1,64 @@
 import styled from '@emotion/styled';
+import { COLORS } from '../../../../utils/universal/constant';
+
+const cssVar = {
+  FEEDBACK_ERROR: '#ff0000',
+  MESSAGE_COLOR: '#212121'
+};
 
 const Container = styled.article`
   .contact {
-    &__title {
-      color: #ffd934;
+    background-image: url('../../asset/images/map.jpg');
+    position: relative;
+
+    &__section {
+      border-bottom: solid 2px ${COLORS.GOLDEN_FUNDING};
+      position: absolute;
+      text-transform: uppercase;
+      top: 10%;
+      z-index: 1;
+    }
+
+    &__titleTop,
+    &__titleBottom {
+      color: ${COLORS.GOLDEN_FUNDING};
       font-size: 20px;
       font-weight: bold;
       text-transform: uppercase;
+    }
 
-      &-text {
-        display: block;
+    &__icon {
+      padding-right: 15px;
+    }
 
-        &--underline {
-          border-bottom: solid 4px #ffd934;
-          padding-bottom: 10px;
-          width: 28px;
-        }
-      }
+    &__titleBottom {
+      display: block;
+    }
+
+    &__title--underline {
+      border-bottom: solid 4px ${COLORS.GOLDEN_FUNDING};
+      padding-bottom: 10px;
+      width: 28px;
+    }
+
+    &__subtitle {
+      display: block;
+      font-family: 'Roboto', Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      margin-top: 35px;
+      font-size: 18px;
     }
 
      &__form,
      &__info {
       align-items: center;
       display: flex;
-      height: 100%;
+      height: 100vh;
+      height: auto;
       justify-content: center;
+      margin-top: 5%;
       width: 50%;
+      z-index: 1;
     }
 
     &__info-container {
@@ -34,102 +67,90 @@ const Container = styled.article`
     }
 
     &__info-container-text {
-      color: #b7b7b7;
       font-family: monospace;
       font-size: 18px;
       margin-top: 20px;
+      padding: 0;
     }
 
     &__info-text {
       display: block;
     }
 
-    &__form {
-      background-color: #252525;
-    }
-
     &__form-container {
       width: 50%;
     }
 
-    &__info {
-      background: #232323;
-    }
-
     &__input-text,
     &__input-button {
-      background: none;
+      background-color: rgba(255, 255, 255, 0.06);
+      border-color: #2A2A2A;
       border: none;
-      border-bottom: 1px solid #666;
-      color: #ddd;
+      box-sizing: border-box;
+      color: ${COLORS.WHITE};
       font-size: 14px;
       margin: 20px 0;
       outline: none;
-      padding: 10px 0;
-      text-transform: uppercase;
-      transition: border-color .2s;
+      padding: 10px;
+      text-transform: capitalize;
+      transition: all .5s ease;
       width: 100%;
     }
 
+    &__input-text {
+      padding: 14px 16px;
+  
+      &:focus {
+        background-color: #171717;
+      }
+    }
+
     &__loading {
-      margin-left: -14px;
-      margin-top: -9px;
+      left: 50%;
       position: absolute;
+      top: 50%;
 
       &-image {
         width: 50px;
       }
     }
 
-    &__input-button {
-      float: right;
-      width: auto;
-    }
-
     &__feedback--error {
       animation: error .3s forwards;
-      color: #ff0000;
+      color: ${cssVar.FEEDBACK_ERROR};
+      font-size: 14px;
       margin-top: -12px;
       position: absolute;
-      font-size: 14px;
-    }
-
-    &__input-text,
-    &__input-button {
-      &:focus {
-        border-bottom-color: #ddd;
-      }
     }
 
     &__input-button {
-      background: none;
+      background-color: ${cssVar.MESSAGE_COLOR};
       border: none;
-      color: #ffd934;
+      color: ${COLORS.GOLDEN_FUNDING};
       cursor: pointer;
       font-size: 15px;
       font-weight: bold;
       outline: none;
-      text-align: right;
+      text-align: center;
     }
 
     &__message,
     &__message-button {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 16px;
       font-weight: 300;
     }
 
     &__message {
       animation: message 0.5s forwards;
-      background: #323232;
+      background: ${cssVar.MESSAGE_COLOR};
       border-radius: 2px;
       bottom: 20px;
-      color: #ffffff;
+      color: ${COLORS.WHITE};
       display: flex;
-      height: 56px;
+      height: auto;
       justify-content: space-between;
       left: 20px;
-      padding: 0 20px;
+      padding: 10px 20px;
       position: fixed;
       width: 248px;
       z-index: 1;
@@ -138,7 +159,7 @@ const Container = styled.article`
     &__message-button {
       background: transparent;
       border: none;
-      color: #edf43f;
+      color: ${COLORS.GOLDEN_FUNDING};
       cursor: pointer;
       text-transform: uppercase;
 

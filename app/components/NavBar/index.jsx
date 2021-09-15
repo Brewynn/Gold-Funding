@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from './style';
+import Container from '../../asset/styles/components/NavBar';
 import Tabs from './Tabs';
 
 const NavBar = ({ sections, stateSection }) => (

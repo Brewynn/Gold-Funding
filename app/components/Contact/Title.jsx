@@ -1,10 +1,15 @@
 import React from 'react';
 
-const Title = ({ title, subTitle }) => (
-  <div className="contact__title">
-    <span className="contact__title-text">{title}</span>
-    <span className="contact__title-text contact__title-text--underline">{subTitle}</span>
-  </div>
-);
+const Title = ({ title, subTitle }) => {
+  const [titleTop, titleBottom] = title.split(' ');
+
+  return (
+    <div className="contact__title">
+      <span className="contact__titleTop">{titleTop}</span>
+      <span className="contact__titleBottom contact__title--underline">{titleBottom}</span>
+      <span className="contact__subtitle">{subTitle}</span>
+    </div>
+  ); 
+}
 
 export default Title;

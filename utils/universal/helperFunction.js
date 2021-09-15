@@ -12,23 +12,6 @@ const mapObject = (obj, callback) =>
   );
 
  /**
- * Map the state and update it with a new state
- *
- * @param {setState} setState
- * @param {callback} callback
- *
- */
-const forEachSetState = (setState, callback) => {
-  setState((state) => {
-    let newState = { ...state };
-
-    mapObject(state, (item) => (newState = callback(item, newState)));
-
-    return newState;
-  });
-};
-
- /**
  * Validate the field
  *
  * @param {String} field
@@ -57,6 +40,5 @@ const validator = (field, value) => {
 
 module.exports = {
   mapObject,
-  forEachSetState,
   validator
 };

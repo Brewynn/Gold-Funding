@@ -12,7 +12,7 @@ const dataSlideShow = [
   {
     title: 'Minimum Requirement',
     subTitle: 'ask about our offers',
-    imageName: 'banana-store.jpg',
+    imageName: 'business.jpg',
   },
 ];
 

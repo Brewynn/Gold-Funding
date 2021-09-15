@@ -1,5 +1,6 @@
 import res from '../../../utils/client/res';
-import { mapObject, forEachSetState  } from '../../../utils/universal/helperFunction';
+import { mapObject } from '../../../utils/universal/helperFunction';
+import { forEachSetState } from '../../../utils/client/helperFunctions';
 
 const classNameInputText = 'contact__input-text';
 const classNameInputButton = 'contact__input-button';
@@ -23,7 +24,7 @@ const inputData = (
     className: classNameInputText,
     onchange: ({ target: { value } }) =>
       setFieldState({ ...fieldState, name: { ...fieldState.name, value } }),
-    placeholder: 'name',
+    placeholder: 'Your name',
     type: 'text',
     value: fieldState.name.value,
     name: 'name',
@@ -39,7 +40,7 @@ const inputData = (
     onchange: ({ target: { value } }) =>
       setFieldState({ ...fieldState, email: { ...fieldState.email, value } }),
     name: 'email',
-    placeholder: 'email',
+    placeholder: 'E-mail',
     type: 'email',
     value: fieldState.email.value,
     validation: {
@@ -53,7 +54,7 @@ const inputData = (
     className: classNameInputText,
     onchange: ({ target: { value } }) =>
       setFieldState({ ...fieldState, phone: { ...fieldState.phone, value } }),
-    placeholder: 'phone number',
+    placeholder: 'Your phone number',
     type: 'text',
     value: fieldState.phone.value,
     name: 'phone',
@@ -69,7 +70,7 @@ const inputData = (
     onchange: ({ target: { value } }) =>
       setFieldState({ ...fieldState, company: { ...fieldState.company, value } }),
     name: 'company',
-    placeholder: 'company',
+    placeholder: 'Your company',
     type: 'text',
     value: fieldState.company.value,
     validation: {
@@ -130,7 +131,7 @@ const inputData = (
 
           case 'ERROR':
             showMessage(
-              'We could not send your message, please try again later.'
+              'We couldn\'t send your message, please try again later.'
             );
             break;
 
@@ -142,7 +143,7 @@ const inputData = (
 
           case 'IS_NOT_VALID':
             // Show an error message
-            forEachSetState(setState, ([, , index], newState) => {
+            forEachSetState(setState, ([,, index], newState) => {
               const [key, isValid] = validations[index];
 
               newState[key].validation.showError = !isValid;
@@ -158,18 +159,18 @@ const inputData = (
       }
     },
     type: 'button',
-    value: 'send',
+    value: 'Send',
   },
 ];
 
 const infoData = [
   {
-    title: 'Direct line',
-    subTitle: '+1 941-313-3099',
+    info: '+1 941-313-3099',
+    icon: 'fa fa-phone',
   },
   {
-    title: 'Email:',
-    subTitle: 'info@goldenfundingsg.com'
+    info: 'info@goldenfundingsg.com',
+    icon: 'fa fa-envelope',
   },
 ];
 

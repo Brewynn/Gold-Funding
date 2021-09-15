@@ -1,5 +1,5 @@
 import { SECTION } from '../universal/constant';
-
+import { mapObject } from '../universal/helperFunction';
 /**
  * Scroll section
  *
@@ -54,19 +54,36 @@ const changeTabColor = (sections, setStateSection) => {
 
   window.addEventListener('scroll', () => {
     const scrollPosition = window.scrollY;
-    const { isHome, isAbout, isContact } = sectionPositions;
+    const { isHome, isAbout, isContacts } = sectionPositions;
     let section = 'home';
 
     if (isHome(scrollPosition)) {
       section = SECTION.HOME;
     } else if (isAbout(scrollPosition)) {
       section = SECTION.ABOUT;
-    } else if (isContact(scrollPosition)) {
-      section = SECTION.CONTACT;
+    } else if (isContacts(scrollPosition)) {
+      section = SECTION.CONTACTS;
     }
 
     window.location.hash = `#${section}`;
     setStateSection(section);
+  });
+};
+
+ /**
+ * Map the state and update it with a new state
+ *
+ * @param {setState} setState
+ * @param {callback} callback
+ *
+ */
+const forEachSetState = (setState, callback) => {
+  setState((state) => {
+    let newState = { ...state };
+
+    mapObject(state, (item) => (newState = callback(item, newState)));
+
+    return newState;
   });
 };
 
@@ -88,5 +105,6 @@ export {
   scrollSection,
   capitalize,
   changeTabColor,
-  buttonDisabled
+  buttonDisabled,
+  forEachSetState
 };

@@ -2,27 +2,30 @@ import React from 'react';
 
 const Input = ({ items }) => (
   <>
-    {items.map((item, index) => (
+    {items.map(({
+      validation = { test: () => {} }, className,
+      onclick, onchange, placeholder, value, name, type
+    }, index) => (
       <div className="contact__input" key={index}>
         <input
-          className={item.className}
-          name={item.name}
-          onChange={item.onchange}
-          onClick={item.onclick}
-          placeholder={item.placeholder}
-          type={item.type}
-          value={item.value}
+          className={className}
+          name={name}
+          onChange={onchange}
+          onClick={onclick}
+          placeholder={placeholder}
+          type={type}
+          value={value}
         />
         {
-          (
-            item.validation &&
-            (
-              item.validation.showError ||
-              (!item.validation.isValid && !item.validation.test(item.value))
-            )
-          ) ? (
+          (validation.showError || (!validation.isValid && !validation.test(value))) ? (
             <div className="contact__feedback--error">
-              <span>{item.value ? item.validation.message : 'This field is required.'}</span>
+              <span>
+                {
+                  value
+                    ? validation.message
+                    : 'This field is required.'
+                }
+              </span>
             </div>
           ) : null
         }

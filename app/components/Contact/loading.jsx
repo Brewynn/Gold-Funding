@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Loading = ({ show }) =>
+const Loading = ({ isLoading }) =>
   <>
     {
-      (show ? (
+      (isLoading ? (
         <picture className="contact__loading">
           <img
             className="contact__loading-image"
-            src="../../asset/images/loading.gif"
+            src="../../asset/images/loading2.gif"
           />
         </picture>
       ) : null)

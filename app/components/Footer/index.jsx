@@ -3,9 +3,11 @@ import Container from '../../asset/styles/components/Footer';
 
 const Footer = () => (
   <Container>
-    <h1>2020 - 2021  
-      | all rights reserved
-    </h1>
+    <div className="footer">
+      <p className="footer__text">
+        Golden Funding - copyright © {new Date().getFullYear()}
+      </p>
+    </div>
   </Container>
 );
 

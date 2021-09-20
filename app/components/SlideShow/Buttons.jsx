@@ -1,12 +1,12 @@
 import React from 'react';
-import { buttonPagination } from './data';
+import { buttonsNextPrev } from './data';
 
 const Buttons = ({ prevImage, nextImage }) => (
   <div className="slideshow__pagination-control">
-    {buttonPagination(prevImage, nextImage).map(({ icon, onclick }, index) =>  (
+    {buttonsNextPrev(prevImage, nextImage).map(({ icon, onclick }, index) =>  (
       <button
         key={index}
-        onClick={onclick}
+        onClick={() => onclick()}
         className="slideshow__pagination-buttons"
       >
         {icon}

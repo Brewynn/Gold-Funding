@@ -1,5 +1,24 @@
-import { SECTION } from '../universal/constant';
 import { mapObject } from '../universal/helperFunction';
+
+/**
+ * Resize Event
+ *
+ * @param {Function} callback
+ *
+ */
+const resizeEvent = (callback) => {
+  window.addEventListener('resize', () => callback());
+}
+
+/**
+ * Verify if a user is using a mobile device
+ *
+ * @return {Boolean}
+ *
+ */
+const isMobile = () =>
+  window.innerWidth <= 800 && window.innerHeight <= 600;
+
 /**
  * Scroll section
  *
@@ -7,13 +26,15 @@ import { mapObject } from '../universal/helperFunction';
  * @param {string} section
  *
  */
-const scrollSection = (section) =>
-  section.current.scrollIntoView(
-    {
-      behavior: 'smooth',
-      block: 'center',
-    }
-  );
+const scrollSection = (section) => {
+  const offsetTop = section.current.offsetTop;
+  const newOffsetTop = isMobile() ? offsetTop - 50 : offsetTop;
+
+  window.scrollTo({
+    top: newOffsetTop,
+    behavior: 'smooth'
+  });
+}
 
 /**
  * Capitalize the letter
@@ -23,52 +44,10 @@ const scrollSection = (section) =>
  *
  */
 const capitalize = (str) =>
-  str.replace(/./, (firstLetter) => firstLetter.toUpperCase());
+  str
+    .replace(/\s+./g, (spaceLetter) => spaceLetter.toUpperCase())
+    .replace(/./, (firstLetter) => firstLetter.toUpperCase());
 
-/**
- * Change the nav section color when the user is scrolling
- *
- * @param {Object} sections
- * @param {Function} setStateSection
- *
- */
-const changeTabColor = (sections, setStateSection) => {
-  let sectionPositions = {};
-  const section = window.location.hash.replace('#', '');
-
-  if (section) {
-    scrollSection(sections[section || 'home']);
-  } else {
-    window.location.hash = '#home';
-  }
-
-  Object.entries(sections).forEach(([sectionName, el]) => {
-    const { offsetTop, clientHeight } = el.current;
-    const offsetDown = (clientHeight + offsetTop);
-    const keyName = `is${capitalize(sectionName)}`;
-
-    sectionPositions[keyName] = (scroll) => (
-      (offsetDown > scroll) && (offsetTop <= scroll)
-    );
-  });
-
-  window.addEventListener('scroll', () => {
-    const scrollPosition = window.scrollY;
-    const { isHome, isAbout, isContacts } = sectionPositions;
-    let section = 'home';
-
-    if (isHome(scrollPosition)) {
-      section = SECTION.HOME;
-    } else if (isAbout(scrollPosition)) {
-      section = SECTION.ABOUT;
-    } else if (isContacts(scrollPosition)) {
-      section = SECTION.CONTACTS;
-    }
-
-    window.location.hash = `#${section}`;
-    setStateSection(section);
-  });
-};
 
  /**
  * Map the state and update it with a new state
@@ -104,7 +83,8 @@ const buttonDisabled = (seconds = 1) => {
 export {
   scrollSection,
   capitalize,
-  changeTabColor,
   buttonDisabled,
-  forEachSetState
+  forEachSetState,
+  isMobile,
+  resizeEvent
 };

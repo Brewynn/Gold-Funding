@@ -1,6 +1,6 @@
 import res from '../../../utils/client/res';
 import { mapObject } from '../../../utils/universal/helperFunction';
-import { forEachSetState } from '../../../utils/client/helperFunctions';
+import { forEachSetState, capitalize } from '../../../utils/client/helperFunctions';
 
 const classNameInputText = 'contact__input-text';
 const classNameInputButton = 'contact__input-button';
@@ -23,7 +23,7 @@ const inputData = (
   {
     className: classNameInputText,
     onchange: ({ target: { value } }) =>
-      setFieldState({ ...fieldState, name: { ...fieldState.name, value } }),
+      setFieldState({ ...fieldState, name: { ...fieldState.name, value: capitalize(value) } }),
     placeholder: 'Your name',
     type: 'text',
     value: fieldState.name.value,
@@ -68,7 +68,7 @@ const inputData = (
   {
     className: classNameInputText,
     onchange: ({ target: { value } }) =>
-      setFieldState({ ...fieldState, company: { ...fieldState.company, value } }),
+      setFieldState({ ...fieldState, company: { ...fieldState.company, value: capitalize(value) } }),
     name: 'company',
     placeholder: 'Your company',
     type: 'text',

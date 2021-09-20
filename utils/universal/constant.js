@@ -6,7 +6,8 @@ const SECTION = {
 
 const COLORS = {
   GOLDEN_FUNDING: '#ffd934',
-  WHITE: '#ffffff'
+  WHITE: '#ffffff',
+  BLACK: '#1b1b1b'
 };
 
 const FIELD_CONTACT = {
@@ -23,9 +24,14 @@ const STATUS = {
   CONFLICT: 409
 };
 
+const MEDIA_QUERY = {
+  VIEWPORT_MEDIUM: '@media only screen and (max-width: 960px)'
+};
+
 module.exports = {
   SECTION,
   FIELD_CONTACT,
   STATUS,
-  COLORS
+  COLORS,
+  MEDIA_QUERY,
 };

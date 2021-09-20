@@ -1,5 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { changeTabColor } from '../utils/client/helperFunctions';
+import React, { useRef } from 'react';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -8,28 +7,22 @@ import Home from './components/Home';
 import NavBar from './components/NavBar';
 
 const App = () => {
-  const [stateSection, setStateSection] = useState('home');
   const sections = {
     home: useRef(),
     about: useRef(),
     contacts: useRef()
-  }
-
-  useEffect(() => {
-    changeTabColor(sections, (section) =>
-      setStateSection(section)
-    );
-  }, []);
+  };
 
   return (
     <>
       <GlobalStyle />
-      <NavBar sections={sections} stateSection={stateSection} />
+      <NavBar sections={sections} />
 
       <section>
         <Home innerRef={sections.home} />
         <About innerRef={sections.about} />
         <Contact innerRef={sections.contacts} />
+        <Footer />
       </section>
     </>
   );

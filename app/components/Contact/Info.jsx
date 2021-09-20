@@ -9,7 +9,7 @@ const Info = ({ items }) =>
       >
         <li className="contact__info-text">
           <i className={`${icon} contact__icon`}></i>
-          {info}
+          <span>{info}</span>
         </li>
       </ul>
     ))}

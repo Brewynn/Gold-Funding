@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
-import { COLORS } from '../../../../utils/universal/constant';
+import { COLORS, MEDIA_QUERY } from '../../../../utils/universal/constant';
 
 const cssVar = {
-  FEEDBACK_ERROR: '#ff0000',
-  MESSAGE_COLOR: '#212121'
+  EVEN_BACKGROUND_INPUT: '#171717',
 };
 
 const Container = styled.article`
@@ -53,22 +52,20 @@ const Container = styled.article`
      &__info {
       align-items: center;
       display: flex;
-      height: 100vh;
-      height: auto;
+      height: 100%;
       justify-content: center;
-      margin-top: 5%;
-      width: 50%;
+      margin-top: 100px;
+      width: 100%;
       z-index: 1;
     }
 
     &__info-container {
       margin-top: -91px;
-      width: 50%;
     }
 
     &__info-container-text {
       font-family: monospace;
-      font-size: 18px;
+      font-size: 15px;
       margin-top: 20px;
       padding: 0;
     }
@@ -92,7 +89,6 @@ const Container = styled.article`
       margin: 20px 0;
       outline: none;
       padding: 10px;
-      text-transform: capitalize;
       transition: all .5s ease;
       width: 100%;
     }
@@ -101,7 +97,7 @@ const Container = styled.article`
       padding: 14px 16px;
   
       &:focus {
-        background-color: #171717;
+        background-color: ${cssVar.EVEN_BACKGROUND_INPUT};
       }
     }
 
@@ -117,14 +113,13 @@ const Container = styled.article`
 
     &__feedback--error {
       animation: error .3s forwards;
-      color: ${cssVar.FEEDBACK_ERROR};
+      color: #ff0000;
       font-size: 14px;
       margin-top: -12px;
       position: absolute;
     }
 
     &__input-button {
-      background-color: ${cssVar.MESSAGE_COLOR};
       border: none;
       color: ${COLORS.GOLDEN_FUNDING};
       cursor: pointer;
@@ -132,6 +127,10 @@ const Container = styled.article`
       font-weight: bold;
       outline: none;
       text-align: center;
+
+      &:hover {
+        background-color: ${cssVar.EVEN_BACKGROUND_INPUT};
+      }
     }
 
     &__message,
@@ -142,7 +141,7 @@ const Container = styled.article`
 
     &__message {
       animation: message 0.5s forwards;
-      background: ${cssVar.MESSAGE_COLOR};
+      background-color: #212121;
       border-radius: 2px;
       bottom: 20px;
       color: ${COLORS.WHITE};
@@ -187,6 +186,41 @@ const Container = styled.article`
 
       to {
         opacity: 1;
+      }
+    }
+  }
+
+  ${MEDIA_QUERY.VIEWPORT_MEDIUM} {
+    .contact {
+      height: auto;
+      flex-wrap: wrap;
+
+      &__section {
+        top: 30px;
+      }
+
+      &__info-container {
+        margin-top: -114px;
+      }
+
+      &__form {
+        margin-top: 200px;
+        margin-bottom: 100px;
+        
+        &-container {
+          width: 90%;
+        }
+      }
+
+      &__info {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        justify-content: left;
+        margin-left: 5%;
+      }
+
+      &__loading {
+        display: none;
       }
     }
   }

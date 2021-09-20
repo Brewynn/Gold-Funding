@@ -1,15 +1,15 @@
 import { buttonDisabled } from '../../../utils/client/helperFunctions';
 
-const buttonPagination = (prevImage, nextImage) => [
+const buttonsNextPrev = (prevImage, nextImage) => [
   {
-    icon: '❮',
+    icon: "❮",
     onclick: () => {
       buttonDisabled();
       prevImage();
     },
   },
   {
-    icon: '❯',
+    icon: "❯",
     onclick: () => {
       buttonDisabled();
       nextImage();
@@ -17,4 +17,4 @@ const buttonPagination = (prevImage, nextImage) => [
   },
 ];
 
-export { buttonPagination};
+export { buttonsNextPrev };

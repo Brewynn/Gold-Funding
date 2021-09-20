@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { COLORS } from '../../../../utils/universal/constant';
+import { COLORS, MEDIA_QUERY } from '../../../../utils/universal/constant';
 
 const Container = styled.div`
   .slideshow {
@@ -8,7 +8,6 @@ const Container = styled.div`
     display: flex;
     height: 100vh;
     left: 0;
-    opacity: 1;
     position: absolute;
     top: 0;
     transform: scale(100%);
@@ -21,7 +20,7 @@ const Container = styled.div`
     }
 
     &__title {
-      font-size: 80px;
+      font-size: 6vw;
     }
 
     &__sub-title {
@@ -73,6 +72,24 @@ const Container = styled.div`
         &:nth-of-type(${prop => prop.paginationIndex + 1}) {
           background-color: ${COLORS.WHITE};
         }
+      }
+    }
+  }
+
+  ${MEDIA_QUERY.VIEWPORT_MEDIUM} {
+    .slideshow {
+      &__pagination-control {
+        display: none;
+      }
+
+      &__header {
+        text-align: center;
+        margin: 0;
+        width: 100%;
+      }
+
+      &__pagination {
+        bottom: 20%;
       }
     }
   }

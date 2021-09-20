@@ -56,11 +56,12 @@ const Contact = ({ innerRef }) => {
   });
 
   return (
-    <Container>
-      <div className="contact" ref={innerRef}>
+    <Container ref={innerRef}>
+      <div className="contact">
         <div className="contact__section">
           <h1>contacts</h1>
         </div>
+
         <div className="contact__form">
           <form className="contact__form-container">
             <Title title="get started" subTitle="Write to us" />
@@ -75,8 +76,8 @@ const Contact = ({ innerRef }) => {
             <Info items={infoData} />
           </div>
         </div>
-      </div>
 
+      </div>
       <Message
         state={showMessage}
         setState={setShowMessage}

@@ -40,5 +40,5 @@ const validator = (field, value) => {
 
 module.exports = {
   mapObject,
-  validator
+  validator,
 };

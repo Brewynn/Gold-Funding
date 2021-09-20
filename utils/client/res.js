@@ -8,7 +8,7 @@ const headers = {
  * Format the url
  *
  * @param {String} url
- * @return {Array}
+ * @return {String}
  *
  */
 const getUrlEndpoint = (url) =>

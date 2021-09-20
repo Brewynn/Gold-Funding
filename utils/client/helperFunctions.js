@@ -21,8 +21,7 @@ const isMobile = () =>
 /**
  * Scroll section
  *
- * @param {Object} sections
- * @param {string} section
+ * @param {Object} section
  *
  */
 const scrollSection = (section) => {
@@ -38,7 +37,7 @@ const scrollSection = (section) => {
 /**
  * Capitalize the first letter or space and letter
  *
- * @param {String} sections
+ * @param {String} str
  * @return {string}
  *
  */
@@ -51,8 +50,8 @@ const capitalize = (str) =>
  /**
  * Map the state and update it with a new state
  *
- * @param {setState} setState
- * @param {callback} callback
+ * @param {Function} setState
+ * @param {Function} callback
  *
  */
 const forEachSetState = (setState, callback) => {

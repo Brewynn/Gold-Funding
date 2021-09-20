@@ -1,7 +1,8 @@
 import React from 'react';
-import { buttonDisabled } from '../../../utils/client/helperFunctions';
+import PropTypes from 'prop-types';
+import {buttonDisabled} from '../../../utils/client/helperFunctions';
 
-const Pagination = ({ items, onClick }) => (
+const Pagination = ({items, onClick}) => (
   <div className="slideshow__pagination">
     <div className="slideshow__pagination-items">
       {items.map((__, index) => (
@@ -19,5 +20,10 @@ const Pagination = ({ items, onClick }) => (
     </div>
   </div>
 );
+
+Pagination.propTypes = {
+  items: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default Pagination;

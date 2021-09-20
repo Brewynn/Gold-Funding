@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { FIELD_CONTACT } from '../../../utils/universal/constant';
-import { validator } from '../../../utils/universal/helperFunction';
-import { inputData, infoData } from './data';
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
+import {FIELD_CONTACT} from '../../../utils/universal/constant';
+import {validator} from '../../../utils/universal/helperFunction';
+import {inputData, infoData} from './data';
 import Container from '../../asset/styles/components/Contact';
 import Info from './Info';
 import Input from './Input';
@@ -9,12 +10,12 @@ import Message from './Message';
 import Title from './Title';
 import Loading from './loading';
 
-const Contact = ({ innerRef }) => {
+const Contact = ({innerRef}) => {
   const message = 'This is not a valid';
   const [showLoading, setShowLoading] = useState(false);
   const [showMessage, setShowMessage] = useState({
     showMessage: false,
-    text: ''
+    text: '',
   });
   const [fieldState, setFieldState] = useState({
     name: {
@@ -23,17 +24,17 @@ const Contact = ({ innerRef }) => {
         isValid: true,
         message: `${message} ${FIELD_CONTACT.NAME}.`,
         showError: false,
-        test: (value) => validator(FIELD_CONTACT.NAME, value)
-      }
+        test: (value) => validator(FIELD_CONTACT.NAME, value),
+      },
     },
     email: {
       value: '',
       validation: {
         isValid: true,
-        message:  `${message} ${FIELD_CONTACT.EMAIL} address.`,
+        message: `${message} ${FIELD_CONTACT.EMAIL} address.`,
         showError: false,
-        test: (value) => validator(FIELD_CONTACT.EMAIL, value)
-      }
+        test: (value) => validator(FIELD_CONTACT.EMAIL, value),
+      },
     },
     phone: {
       value: '',
@@ -41,18 +42,18 @@ const Contact = ({ innerRef }) => {
         isValid: true,
         message: `${message} ${FIELD_CONTACT.PHONE} number.`,
         showError: false,
-        test: (value) => validator(FIELD_CONTACT.PHONE, value)
-      }
+        test: (value) => validator(FIELD_CONTACT.PHONE, value),
+      },
     },
     company: {
       value: '',
       validation: {
         isValid: true,
-        message:  `${message} ${FIELD_CONTACT.COMPANY} name.`,
+        message: `${message} ${FIELD_CONTACT.COMPANY} name.`,
         showError: false,
-        test: (value) => validator(FIELD_CONTACT.COMPANY, value)
-      }
-    }
+        test: (value) => validator(FIELD_CONTACT.COMPANY, value),
+      },
+    },
   });
 
   return (
@@ -65,7 +66,14 @@ const Contact = ({ innerRef }) => {
         <div className="contact__form">
           <form className="contact__form-container">
             <Title title="get started" subTitle="Write to us" />
-            <Input items={inputData(fieldState, setFieldState, setShowMessage, setShowLoading)} />
+            <Input items={
+              inputData(
+                  fieldState,
+                  setFieldState,
+                  setShowMessage,
+                  setShowLoading,
+              )
+            } />
             <Loading isLoading={showLoading} />
           </form>
         </div>
@@ -84,6 +92,10 @@ const Contact = ({ innerRef }) => {
       />
     </Container>
   );
-}
+};
+
+Contact.propTypes = {
+  innerRef: PropTypes.object.isRequired,
+};
 
 export default Contact;

@@ -1,9 +1,10 @@
 import React from 'react';
-import { buttonsNextPrev } from './data';
+import PropTypes from 'prop-types';
+import {buttonsNextPrev} from './data';
 
-const Buttons = ({ prevImage, nextImage }) => (
+const Buttons = ({prevImage, nextImage}) => (
   <div className="slideshow__pagination-control">
-    {buttonsNextPrev(prevImage, nextImage).map(({ icon, onclick }, index) =>  (
+    {buttonsNextPrev(prevImage, nextImage).map(({icon, onclick}, index) => (
       <button
         key={index}
         onClick={() => onclick()}
@@ -14,5 +15,10 @@ const Buttons = ({ prevImage, nextImage }) => (
     ))}
   </div>
 );
+
+Buttons.propTypes = {
+  prevImage: PropTypes.func.isRequired,
+  nextImage: PropTypes.func.isRequired,
+};
 
 export default Buttons;

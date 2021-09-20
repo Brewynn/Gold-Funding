@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import Container from '../../asset/styles/components/NavBar';
 import Tabs from './Tabs';
 
-const NavBar = ({ sections }) => {
+const NavBar = ({sections}) => {
   const [stateSection, setStateSection] = useState('home');
 
   return (
@@ -16,10 +17,17 @@ const NavBar = ({ sections }) => {
           />
         </picture>
 
-        <Tabs sections={sections} setStateSection={setStateSection} />
+        <Tabs
+          sections={sections}
+          setStateSection={setStateSection}
+        />
       </div>
     </Container>
   );
-}
- 
+};
+
+NavBar.propTypes = {
+  sections: PropTypes.object.isRequired,
+};
+
 export default NavBar;

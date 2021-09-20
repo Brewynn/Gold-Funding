@@ -1,4 +1,4 @@
-import { mapObject } from '../universal/helperFunction';
+import {mapObject} from '../universal/helperFunction';
 
 /**
  * Resize Event
@@ -6,9 +6,8 @@ import { mapObject } from '../universal/helperFunction';
  * @param {Function} callback
  *
  */
-const resizeEvent = (callback) => {
+const resizeEvent = (callback) =>
   window.addEventListener('resize', () => callback());
-}
 
 /**
  * Verify if a user is using a mobile device
@@ -37,7 +36,7 @@ const scrollSection = (section) => {
 }
 
 /**
- * Capitalize the letter
+ * Capitalize the first letter or space and letter
  *
  * @param {String} sections
  * @return {string}
@@ -86,5 +85,5 @@ export {
   buttonDisabled,
   forEachSetState,
   isMobile,
-  resizeEvent
+  resizeEvent,
 };

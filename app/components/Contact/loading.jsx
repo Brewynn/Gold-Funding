@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Loading = ({ isLoading }) =>
+const Loading = ({isLoading}) =>
   <>
     {
       (isLoading ? (
@@ -12,6 +13,10 @@ const Loading = ({ isLoading }) =>
         </picture>
       ) : null)
     }
-  </>
+  </>;
+
+Loading.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+};
 
 export default Loading;

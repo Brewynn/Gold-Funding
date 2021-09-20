@@ -1,29 +1,32 @@
 import res from '../../../utils/client/res';
-import { mapObject } from '../../../utils/universal/helperFunction';
-import { forEachSetState, capitalize } from '../../../utils/client/helperFunctions';
+import {mapObject} from '../../../utils/universal/helperFunction';
+import {
+  forEachSetState,
+  capitalize,
+} from '../../../utils/client/helperFunctions';
 
 const classNameInputText = 'contact__input-text';
 const classNameInputButton = 'contact__input-button';
 
 /**
- * returns all data of the inputs
+ * returns all attributes and events for each input
  *
  * @param {Object} fieldState
  * @param {Function} setFieldState
  * @param {Object} messageState
  * @param {Function} setShowLoading
- * 
+ *
  * @return {Array}
  *
  */
-const inputData = (
-  fieldState, setFieldState,
-  messageState, setShowLoading
-) => [
+const inputData = (fieldState, setFieldState, messageState, setShowLoading) => [
   {
     className: classNameInputText,
-    onchange: ({ target: { value } }) =>
-      setFieldState({ ...fieldState, name: { ...fieldState.name, value: capitalize(value) } }),
+    onchange: ({target: {value}}) => {
+      setFieldState({
+        ...fieldState, name: {...fieldState.name, value: capitalize(value)},
+      });
+    },
     placeholder: 'Your name',
     type: 'text',
     value: fieldState.name.value,
@@ -37,8 +40,11 @@ const inputData = (
   },
   {
     className: classNameInputText,
-    onchange: ({ target: { value } }) =>
-      setFieldState({ ...fieldState, email: { ...fieldState.email, value } }),
+    onchange: ({target: {value}}) => {
+      setFieldState({
+        ...fieldState, email: {...fieldState.email, value},
+      });
+    },
     name: 'email',
     placeholder: 'E-mail',
     type: 'email',
@@ -52,8 +58,9 @@ const inputData = (
   },
   {
     className: classNameInputText,
-    onchange: ({ target: { value } }) =>
-      setFieldState({ ...fieldState, phone: { ...fieldState.phone, value } }),
+    onchange: ({target: {value}}) => {
+      setFieldState({...fieldState, phone: {...fieldState.phone, value}});
+    },
     placeholder: 'Your phone number',
     type: 'text',
     value: fieldState.phone.value,
@@ -67,8 +74,12 @@ const inputData = (
   },
   {
     className: classNameInputText,
-    onchange: ({ target: { value } }) =>
-      setFieldState({ ...fieldState, company: { ...fieldState.company, value: capitalize(value) } }),
+    onchange: ({target: {value}}) => {
+      setFieldState({
+        ...fieldState,
+        company: {...fieldState.company, value: capitalize(value)},
+      });
+    },
     name: 'company',
     placeholder: 'Your company',
     type: 'text',
@@ -84,11 +95,11 @@ const inputData = (
     className: classNameInputButton,
     onclick: async () => {
       const validators = mapObject(fieldState, ([key]) => {
-        const { validation: { test }, value } = fieldState[key];
+        const {validation: {test}, value} = fieldState[key];
         const isValid = test(value);
 
         setFieldState((state) => {
-          const newState = { ...state };
+          const newState = {...state};
 
           newState[key].validation.isValid = isValid;
           return newState;
@@ -101,7 +112,7 @@ const inputData = (
       if (canSendMessage) {
         setShowLoading(true);
 
-        const { message, validations } = await res.post('api/v1/email', {
+        const {message, validations} = await res.post('api/v1/email', {
           name: fieldState.name.value,
           email: fieldState.email.value,
           phone: fieldState.phone.value,
@@ -109,7 +120,7 @@ const inputData = (
         });
         const showMessage = (text) => {
           messageState((state) => {
-            const newState = { ...state };
+            const newState = {...state};
 
             newState.text = text;
             newState.showMessage = true;
@@ -124,21 +135,17 @@ const inputData = (
               newState[key].value = '';
               return newState;
             });
-            showMessage(
-              'Your message has been sent successfully.'
-            );
+            showMessage('Your message has been sent successfully.');
             break;
 
           case 'ERROR':
-            showMessage(
-              'We couldn\'t send your message, please try again later.'
-            );
+            showMessage(`
+              We couldn\'t send your message, please try again later.
+            `);
             break;
 
           case 'UNAUTHORIZED':
-            showMessage(
-              'You are not authorized to send this message.'
-            );
+            showMessage('You are not authorized to send this message.');
             break;
 
           case 'IS_NOT_VALID':
@@ -176,5 +183,5 @@ const infoData = [
 
 export {
   inputData,
-  infoData
+  infoData,
 };

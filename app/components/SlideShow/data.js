@@ -1,15 +1,15 @@
-import { buttonDisabled } from '../../../utils/client/helperFunctions';
+import {buttonDisabled} from '../../../utils/client/helperFunctions';
 
 const buttonsNextPrev = (prevImage, nextImage) => [
   {
-    icon: "❮",
+    icon: '❮',
     onclick: () => {
       buttonDisabled();
       prevImage();
     },
   },
   {
-    icon: "❯",
+    icon: '❯',
     onclick: () => {
       buttonDisabled();
       nextImage();
@@ -17,4 +17,4 @@ const buttonsNextPrev = (prevImage, nextImage) => [
   },
 ];
 
-export { buttonsNextPrev };
+export {buttonsNextPrev};

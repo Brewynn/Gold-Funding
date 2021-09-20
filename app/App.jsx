@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, {useRef} from 'react';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -10,7 +10,7 @@ const App = () => {
   const sections = {
     home: useRef(),
     about: useRef(),
-    contacts: useRef()
+    contacts: useRef(),
   };
 
   return (
@@ -26,6 +26,6 @@ const App = () => {
       </section>
     </>
   );
-}
+};
 
 export default App;

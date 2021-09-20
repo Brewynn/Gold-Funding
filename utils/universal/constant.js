@@ -33,5 +33,5 @@ module.exports = {
   FIELD_CONTACT,
   STATUS,
   COLORS,
-  MEDIA_QUERY,
+  MEDIA_QUERY
 };

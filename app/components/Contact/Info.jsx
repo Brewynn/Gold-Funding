@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Info = ({ items }) =>
+const Info = ({items}) =>
   <>
-    {items.map(({ info, icon }, index) => (
+    {items.map(({info, icon}, index) => (
       <ul
         className="contact__info-container-text"
         key={index}
@@ -13,6 +14,10 @@ const Info = ({ items }) =>
         </li>
       </ul>
     ))}
-  </>
+  </>;
+
+Info.propTypes = {
+  items: PropTypes.array.isRequired,
+};
 
 export default Info;

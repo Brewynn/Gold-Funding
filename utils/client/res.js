@@ -5,7 +5,7 @@ const headers = {
 };
 
 /**
- * format the url
+ * Format the url
  *
  * @param {String} url
  * @return {Array}

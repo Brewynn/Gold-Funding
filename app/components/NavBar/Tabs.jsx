@@ -1,10 +1,20 @@
-import React, { useEffect } from 'react';
-import { scrollSection, isMobile, resizeEvent, capitalize } from '../../../utils/client/helperFunctions';
-import { SECTION } from '../../../utils/universal/constant';
+import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
+import {
+  scrollSection,
+  isMobile,
+  resizeEvent,
+  capitalize,
+} from '../../../utils/client/helperFunctions';
+import {SECTION} from '../../../utils/universal/constant';
 
-const Tabs = ({ sections, setStateSection }) => {
+const Tabs = ({sections, setStateSection}) => {
   useEffect(() => scrollEvent(), []);
 
+  /**
+   * Change the hash URL and tab nav color when the user is scrolling
+   *
+   */
   const scrollEvent = () => {
     let sectionPositions = getSectionPositions();
     const section = window.location.hash.replace('#', '');
@@ -37,8 +47,14 @@ const Tabs = ({ sections, setStateSection }) => {
     });
   };
 
+  /**
+   * Get the current positions for each section
+   *
+   * @return {Object}
+   *
+   */
   const getSectionPositions = () => {
-    let sectionPositions = {};
+    const sectionPositions = {};
 
     Object.entries(sections).forEach(([sectionName, el]) => {
       const { offsetTop, clientHeight } = el.current;
@@ -52,7 +68,7 @@ const Tabs = ({ sections, setStateSection }) => {
     });
 
     return sectionPositions;
-  }
+  };
 
   return (
     <ul className="nav__items">
@@ -69,6 +85,11 @@ const Tabs = ({ sections, setStateSection }) => {
       ))}
     </ul>
   );
-}
+};
+
+Tabs.propTypes = {
+  sections: PropTypes.object.isRequired,
+  setStateSection: PropTypes.func.isRequired,
+};
 
 export default Tabs;

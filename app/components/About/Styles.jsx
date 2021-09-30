@@ -1,16 +1,19 @@
 import styled from '@emotion/styled';
-import { COLORS, MEDIA_QUERY } from '../../../../utils/universal/constant';
+import {COLORS, MEDIA_QUERY} from '../../../utils/universal/constant';
+import {getImagePath} from '../../../utils/client/helperFunctions';
 
 const cssVar = {
   ICON_USERS: '#03a9f4',
   ICON_DIAMOND: '#3f51b5',
   ICON_HEART: '#e91e63',
-  ICON_CLOCK: '#2196f3'
+  ICON_CLOCK: '#2196f3',
 };
+
+const imagePath = '../../asset/images/about-us';
 
 const Container = styled.article`
   .about {
-    background-image: url('../../asset/images/about-us.jpg');
+    background-image: url(${getImagePath(imagePath, 'jpg')});
 
     &__section {
       border-bottom: solid 2px ${COLORS.GOLDEN_FUNDING};
@@ -76,6 +79,7 @@ const Container = styled.article`
 
    ${MEDIA_QUERY.VIEWPORT_MEDIUM} {
     .about {
+      background-size: 100% 100%;
       height: auto;
 
       &__item {

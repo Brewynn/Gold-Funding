@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
-import Container from '../../asset/styles/components/SlideShow';
+import Container from './Styles';
 import Pagination from './Pagination';
 import Buttons from './Buttons';
 import Title from './Title';
@@ -8,7 +8,7 @@ import Title from './Title';
 const SlideShow = ({items, timer}) => {
   const [interval, addInterval] = useState(null);
   const [paginationIndex, setPaginationIndex] = useState(0);
-  const {title, subTitle, imageName} = items[paginationIndex];
+  const {title, subTitle, backgroundImage} = items[paginationIndex];
   const IMAGES_SIZE = items.length - 1;
   const titleRef = useRef(null);
 
@@ -50,8 +50,9 @@ const SlideShow = ({items, timer}) => {
    */
   const titleAnimation = (option) => {
     const title = titleRef.current;
+    const TRANSLATE_Y = 'translateY';
     const translateY = (option === 'next') ?
-      'translateY(-100px)' : 'translateY(100px)';
+      `${TRANSLATE_Y}(-100px)` : `${TRANSLATE_Y}(100px)`;
 
     title.animate([
       {transform: translateY, opacity: 0},
@@ -106,7 +107,10 @@ const SlideShow = ({items, timer}) => {
   };
 
   return (
-    <Container imageName={imageName} paginationIndex={paginationIndex}>
+    <Container
+      backgroundImage={backgroundImage}
+      paginationIndex={paginationIndex}
+    >
       <div className="slideshow">
         <header className="slideshow__header">
           <Title

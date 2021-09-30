@@ -1,13 +1,15 @@
 import styled from '@emotion/styled';
-import { COLORS, MEDIA_QUERY } from '../../../../utils/universal/constant';
+import {COLORS, MEDIA_QUERY} from '../../../utils/universal/constant';
+import {getImagePath} from '../../../utils/client/helperFunctions';
 
+const path = '../../asset/images';
 const cssVar = {
   EVEN_BACKGROUND_INPUT: '#171717',
 };
 
 const Container = styled.article`
   .contact {
-    background-image: url('../../asset/images/map.jpg');
+    background-image: url(${getImagePath(`${path}/contact`, 'jpg')});
     position: relative;
 
     &__section {
@@ -213,8 +215,8 @@ const Container = styled.article`
       }
 
       &__info {
-        margin-top: 100px;
-        margin-bottom: 100px;
+        margin-top: 42px;
+        margin-bottom: 50px;
         justify-content: left;
         margin-left: 5%;
       }

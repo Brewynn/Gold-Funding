@@ -1,20 +1,25 @@
-import React, {useRef} from 'react';
-import About from './components/About';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import GlobalStyle from './asset/styles/app/App';
-import Home from './components/Home';
-import NavBar from './components/NavBar';
+import React, {useRef, Suspense, lazy, useState} from 'react';
+
+const About = lazy(() => import('./components/About'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const GlobalStyle = lazy(() => import('./Styles'));
+const Home = lazy(() => import('./components/Home'));
+const NavBar = lazy(() => import('./components/NavBar'));
+
+const renderLoader = () => (
+  <span>Loading</span>
+);
 
 const App = () => {
-  const sections = {
-    home: useRef(),
-    about: useRef(),
-    contacts: useRef(),
-  };
+  const [sections] = useState({
+    home: useRef({}),
+    about: useRef({}),
+    contacts: useRef({}),
+  });
 
   return (
-    <>
+    <Suspense fallback={renderLoader}>
       <GlobalStyle />
       <NavBar sections={sections} />
 
@@ -24,7 +29,7 @@ const App = () => {
         <Contact innerRef={sections.contacts} />
         <Footer />
       </section>
-    </>
+    </Suspense>
   );
 };
 

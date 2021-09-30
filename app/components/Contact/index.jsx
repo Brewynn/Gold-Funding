@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {FIELD_CONTACT} from '../../../utils/universal/constant';
 import {validator} from '../../../utils/universal/helperFunction';
 import {inputData, infoData} from './data';
-import Container from '../../asset/styles/components/Contact';
+import Container from './Styles';
 import Info from './Info';
 import Input from './Input';
 import Message from './Message';

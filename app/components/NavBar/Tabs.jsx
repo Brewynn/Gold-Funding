@@ -9,7 +9,11 @@ import {
 import {SECTION} from '../../../utils/universal/constant';
 
 const Tabs = ({sections, setStateSection}) => {
-  useEffect(() => scrollEvent(), []);
+  useEffect(() => {
+    if (sections.home.current) {
+      scrollEvent();
+    }
+  }, [sections.home.current]);
 
   /**
    * Change the hash URL and tab nav color when the user is scrolling
@@ -31,7 +35,7 @@ const Tabs = ({sections, setStateSection}) => {
 
     window.addEventListener('scroll', () => {
       const scrollPosition = window.scrollY;
-      const { isHome, isAbout, isContacts } = sectionPositions;
+      const {isHome, isAbout, isContacts} = sectionPositions;
       let section = 'home';
 
       if (isHome(scrollPosition)) {
@@ -57,7 +61,7 @@ const Tabs = ({sections, setStateSection}) => {
     const sectionPositions = {};
 
     Object.entries(sections).forEach(([sectionName, el]) => {
-      const { offsetTop, clientHeight } = el.current;
+      const {offsetTop, clientHeight} = el.current;
       const newOffsetTop = isMobile() ? (offsetTop - 50) : offsetTop;
       const offsetDown = (clientHeight + newOffsetTop);
       const keyName = `is${capitalize(sectionName)}`;

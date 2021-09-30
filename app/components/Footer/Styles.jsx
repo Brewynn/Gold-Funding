@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { COLORS } from '../../../../utils/universal/constant';
+import {COLORS} from '../../../utils/universal/constant';
 
 const Container = styled.footer`
   .footer {

@@ -1,21 +1,24 @@
+import {getImagePath} from '../../../utils/client/helperFunctions';
+
+const path = '../../asset/images';
 const dataSlideShow = [
   {
     title: 'Welcome to',
     subTitle: 'Golden Funding',
-    imageName: 'homepage.jpg',
+    backgroundImage: getImagePath(`${path}/slideshow-1`, 'jpg'),
   },
   {
     title: 'Apply for an immediate offer',
     subTitle: 'Speak with an agent!',
-    imageName: 'about-us.jpeg',
+    backgroundImage: getImagePath(`${path}/slideshow-2`, 'jpeg'),
   },
   {
     title: 'Minimum Requirement',
     subTitle: 'ask about our offers',
-    imageName: 'business.jpg',
+    backgroundImage: getImagePath(`${path}/slideshow-3`, 'jpg'),
   },
 ];
 
 export {
-  dataSlideShow
+  dataSlideShow,
 };

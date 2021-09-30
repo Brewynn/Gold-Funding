@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Container from '../../asset/styles/components/Home';
+import Container from './Styles';
 import SlideShow from '../SlideShow';
 import {dataSlideShow} from './data';
 

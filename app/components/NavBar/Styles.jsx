@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { COLORS, MEDIA_QUERY } from '../../../../utils/universal/constant';
+import {COLORS, MEDIA_QUERY} from '../../../utils/universal/constant';
 
 const Container = styled.header`
   .nav {
@@ -11,7 +11,6 @@ const Container = styled.header`
     &__logo {
       position: absolute;
       padding: 10px 22px;
-      width: 80px;
     }
 
     &__items {

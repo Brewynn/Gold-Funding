@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import Container from '../../asset/styles/components/NavBar';
+import Container from './Styles';
 import Tabs from './Tabs';
 
 const NavBar = ({sections}) => {

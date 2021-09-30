@@ -5,8 +5,7 @@ import {
   capitalize,
 } from '../../../utils/client/helperFunctions';
 
-const classNameInputText = 'contact__input-text';
-const classNameInputButton = 'contact__input-button';
+const classNameInput = 'contact__input-text';
 
 /**
  * returns all attributes and events for each input
@@ -21,7 +20,7 @@ const classNameInputButton = 'contact__input-button';
  */
 const inputData = (fieldState, setFieldState, messageState, setShowLoading) => [
   {
-    className: classNameInputText,
+    className: classNameInput,
     onchange: ({target: {value}}) => {
       setFieldState({
         ...fieldState, name: {...fieldState.name, value: capitalize(value)},
@@ -39,7 +38,7 @@ const inputData = (fieldState, setFieldState, messageState, setShowLoading) => [
     },
   },
   {
-    className: classNameInputText,
+    className: classNameInput,
     onchange: ({target: {value}}) => {
       setFieldState({
         ...fieldState, email: {...fieldState.email, value},
@@ -57,7 +56,7 @@ const inputData = (fieldState, setFieldState, messageState, setShowLoading) => [
     },
   },
   {
-    className: classNameInputText,
+    className: classNameInput,
     onchange: ({target: {value}}) => {
       setFieldState({...fieldState, phone: {...fieldState.phone, value}});
     },
@@ -73,7 +72,7 @@ const inputData = (fieldState, setFieldState, messageState, setShowLoading) => [
     },
   },
   {
-    className: classNameInputText,
+    className: classNameInput,
     onchange: ({target: {value}}) => {
       setFieldState({
         ...fieldState,
@@ -92,7 +91,7 @@ const inputData = (fieldState, setFieldState, messageState, setShowLoading) => [
     },
   },
   {
-    className: classNameInputButton,
+    className: 'contact__input-button',
     onclick: async () => {
       const validators = mapObject(fieldState, ([key]) => {
         const {validation: {test}, value} = fieldState[key];

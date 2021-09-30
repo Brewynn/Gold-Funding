@@ -1,7 +1,7 @@
 import {Global, css} from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 import React from 'react';
-import {MEDIA_QUERY, COLORS} from '../../../../utils/universal/constant';
+import {MEDIA_QUERY, COLORS} from '../utils/universal/constant';
 
 const GlobalStyle = () => (
   <Global
@@ -13,7 +13,7 @@ const GlobalStyle = () => (
         font-size: 16px;
         scroll-behavior: smooth;
       }
- 
+
       .about,
       .contact,
       .slideshow {

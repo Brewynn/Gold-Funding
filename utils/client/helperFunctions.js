@@ -15,8 +15,18 @@ const resizeEvent = (callback) =>
  * @return {Boolean}
  *
  */
-const isMobile = () =>
-  window.innerWidth <= 800 && window.innerHeight <= 600;
+const isMobile = () => 
+  [
+    /Android/i,
+    /webOS/i,
+    /iPhone/i,
+    /iPad/i,
+    /iPod/i,
+    /BlackBerry/i,
+    /Windows Phone/i,
+  ].some((toMatchItem) =>
+    navigator.userAgent.match(toMatchItem)
+  );
 
 /**
  * Scroll section
@@ -28,7 +38,7 @@ const scrollSection = (section) => {
   const offsetTop = section.current.offsetTop;
   const newOffsetTop = isMobile() ? offsetTop - 50 : offsetTop;
 
-  window.scrollTo({
+  window.scroll({
     top: newOffsetTop,
     behavior: 'smooth'
   });
@@ -78,6 +88,37 @@ const buttonDisabled = (seconds = 1) => {
   setTimeout(() => disabled(false), seconds * 1000);
 };
 
+/**
+ * Change the image size when the viewport change
+ *
+ * @return {String}
+ *
+ */
+const getImagePath = (path, fileType) => {
+  const screenWidth = window.innerWidth;
+  let imageSize = 'original';
+
+  if (isMobile()) {
+    if (screenWidth <= 320) {
+      imageSize = '320w';
+    }
+
+    if ((screenWidth > 320) && (screenWidth <= 480)) {
+      imageSize = '480w';
+    }
+
+    if ((screenWidth > 480) && (screenWidth <= 640)) {
+      imageSize = '640w';
+    }
+
+    if ((screenWidth > 640) && (screenWidth <= 800)) {
+      imageSize = '800w';
+    }
+  }
+
+  return `${path}-${imageSize}.${fileType}`;
+};
+
 export {
   scrollSection,
   capitalize,
@@ -85,4 +126,5 @@ export {
   forEachSetState,
   isMobile,
   resizeEvent,
+  getImagePath,
 };

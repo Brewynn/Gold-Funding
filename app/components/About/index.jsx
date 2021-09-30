@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Container from '../../asset/styles/components/About';
+import Container from './Styles';
 import {aboutData} from './data';
 
 const AboutUs = ({innerRef}) => (

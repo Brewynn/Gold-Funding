@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import { COLORS, MEDIA_QUERY } from '../../../../utils/universal/constant';
+import {COLORS, MEDIA_QUERY} from '../../../utils/universal/constant';
 
 const Container = styled.div`
   .slideshow {
     align-items: center;
-    background-image: url('../../asset/images/${prop => prop.imageName}');
+    background-image: url('${(prop) => prop.backgroundImage}');
     display: flex;
     height: 100vh;
     left: 0;

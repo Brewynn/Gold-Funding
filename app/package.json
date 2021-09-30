@@ -34,7 +34,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "webpack serve --config ./webpack.config.js --progress",
-    "start:prod": "webpack --mode production"
+    "start:QA": "../ngrok http 8001",
+    "start:build": "webpack --mode production"
   },
   "keywords": [],
   "author": "Brewyn Espinal, Brewyn@outlook.com",
